@@ -1,0 +1,24 @@
+{
+  "name": "favorite-song-and-playlist",
+  "version": "1.0.0",
+  "description": "This web app will handle user songs and playlists.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KMausisa/favorite-song-node.git"
+  },
+  "author": "Kendrick Mausisa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KMausisa/favorite-song-node/issues"
+  },
+  "homepage": "https://github.com/KMausisa/favorite-song-node#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15"
+  }
+}
