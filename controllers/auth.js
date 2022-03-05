@@ -104,9 +104,6 @@ exports.postLogin = (req, res, next) => {
     })
     .catch((err) => {
       console.log(err);
-      // const error = new Error(err);
-      // error.httpStatusCode = 500;
-      // return next(error);
     });
 };
 
@@ -138,19 +135,7 @@ exports.postSignup = (req, res, next) => {
       });
       return user.save();
     })
-    // .then((result) => {
-    //   res.redirect("/login");
-    //   return transporter.sendMail({
-    //     to: email,
-    //     from: "kmausisa@byui.edu",
-    //     subject: "Signup succeeded!",
-    //     html: "<h1>You successfully signed up!</h1>",
-    //   });
-    // })
     .catch((err) => {
       console.log(err);
-      // const error = new Error(err);
-      // error.httpStatusCode = 500;
-      // return next(error);
     });
 };
