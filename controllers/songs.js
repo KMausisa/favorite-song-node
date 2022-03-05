@@ -4,3 +4,10 @@ exports.getHome = (req, res, next) => {
     path: "/",
   });
 };
+
+exports.getPlaylist = (req, res, next) => {
+  res.render("playlist/playlist", {
+    pageTitle: "Playlists",
+    path: "/songs"
+  })
+}

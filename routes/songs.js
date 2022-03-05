@@ -8,4 +8,6 @@ const router = express.Router();
 
 router.get("/", songsController.getHome);
 
+router.get("/songs", songsController.getPlaylist)
+
 module.exports = router;
