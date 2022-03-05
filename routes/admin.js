@@ -12,4 +12,15 @@ router.get("/add-song", isAuth, adminController.getAddSong);
 
 router.get("/my-playlist", isAuth, adminController.getMyPlaylist);
 
+router.post(
+  "/add-song",
+  [
+    body("songName").isString().isLength({ min: 3 }).trim(),
+    body("artistName").isString().isLength({ min: 3 }).trim(),
+    body("imageUrl").isURL(),
+  ],
+  isAuth,
+  adminController.postAddSong
+);
+
 module.exports = router;

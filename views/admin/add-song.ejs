@@ -1,11 +1,46 @@
 <%- include("../includes/head.ejs") %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/song.css">
 </head>
 
 <body>
     <%- include("../includes/nav.ejs") %>
     <main>
-        <h1>Add Song</h1>
+        <% if (errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
     </main>
+    <form class="song-form" action="/admin/add-song" method="POST">
+        <div class="form-control">
+            <label for="songName">Song Name</label>
+            <input
+                class="<%= validationErrors.find(e => e.param === 'songName') ? 'invalid': '' %>" 
+                type="text"
+                name="songName"
+                id="songName"
+                value="<% if (hasError) { %><%= song.songName %><% } %>">
+        </div>
+        <div class="form-control">
+            <label for="artistName">Artist Name</label>
+            <input
+                class="<%= validationErrors.find(e => e.param === 'artistName') ? 'invalid': '' %>" 
+                type="text"
+                name="artistName"
+                id="artistName"
+                value="<% if (hasError) { %><%= song.artistName %><% } %>">
+        </div>
+        <div class="form-control">
+            <label for="imageUrl">Image URL</label>
+            <input
+                class="<%= validationErrors.find(e => e.param === 'imageUrl') ? 'invalid': '' %>" 
+                type="text"
+                name="imageUrl"
+                id="imageUrl"
+                value="<% if (hasError) { %><%= song.imageUrl %><% } %>">
+        </div>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <button class="btn" type="submit">Add Song</button>
+    </form>
 </body>
 
 <%- include("../includes/end.ejs") %>
