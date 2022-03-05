@@ -1,3 +1,6 @@
+require("dotenv").config();
+const cors = require("cors");
+
 const path = require("path");
 
 const express = require("express");
@@ -8,11 +11,13 @@ const MongoDBStore = require("connect-mongodb-session")(session);
 const csrf = require("csurf");
 const flash = require("connect-flash");
 
-const User = require('./models/user');
+const User = require("./models/user");
+
+const PORT = process.env.PORT || 5050;
 
 const app = express();
 const store = new MongoDBStore({
-  uri: "mongodb+srv://kmausisa:Kentimes0013@cluster0.zwoaq.mongodb.net/songs",
+  uri: process.env.MONGODB_URL,
   collection: "sessions",
 });
 const csrfProtection = csrf();
@@ -49,14 +54,14 @@ app.use((req, res, next) => {
     return next();
   }
   User.findById(req.session.user._id)
-    .then(user => {
+    .then((user) => {
       if (!user) {
         return next();
       }
       req.user = user;
       next();
     })
-    .catch(err => {
+    .catch((err) => {
       next(new Error(err));
     });
 });
@@ -65,4 +70,15 @@ app.use("/admin", adminRoutes);
 app.use(songsRoutes);
 app.use(authRoutes);
 
-app.listen(5050);
+const options = {
+  family: 4,
+};
+
+mongoose
+  .connect(process.env.MONGODB_URL, options)
+  .then((result) => {
+    app.listen(PORT);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
