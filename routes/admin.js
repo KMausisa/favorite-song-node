@@ -23,4 +23,16 @@ router.post(
   adminController.postAddSong
 );
 
+router.get("/create-playlist", isAuth, adminController.getCreatePlaylist);
+
+router.post(
+  "/create-playlist",
+  [
+    body("playlistName").isString().isLength({ min: 3 }).trim(),
+    body("imageUrl").isURL(),
+  ],
+  isAuth,
+  adminController.postCreatePlaylist
+);
+
 module.exports = router;

@@ -1,10 +1,40 @@
 <%- include("../includes/head.ejs") %>
+    <link rel="stylesheet" href="/css/song.css">
 </head>
 
 <body>
     <%- include("../includes/nav.ejs") %>
     <main>
-        <h1>This is the Songs Page</h1>
+        <h1>Current User Favorites</h1>
+        <% if (playlist.length > 0) { %>
+            <div class="grid">
+                <% for (let song of playlist) { %>
+                    <article class="card song-item">
+                        <header class="card__header">
+                            <h2 class="song__title">
+                                "<%= song.songName %>"
+                            </h2>
+                        </header>
+                        <div class="card__image">
+                            <img src="<%= song.imageUrl %>" alt="<%= song.songName %>">
+                        </div>
+                        <div class="card__content">
+                            <h2 class="song__artistName">
+                                <%= song.artistName %>
+                            </h2>
+                        </div>
+                        <div class="card__actions">
+                            <form action="/admin/add-to-playlist" method="POST">
+                                <input type="hidden" value="<%= song._id %>" name="songId">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <button class="btn" type="submit">Add Song to Playlist</button>
+                            </form>
+
+                        </div>
+                    </article>
+                <% } %>
+            </div>
+        <% } %>
     </main>
 </body>
 
