@@ -195,6 +195,10 @@ form {
   justify-content: center;
 }
 
+.card__image img.playlist__img {
+  width: 50%;
+}
+
 .card__image img {
   width: 90%;
 }
