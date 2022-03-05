@@ -1,3 +1,8 @@
+const crypto = require("crypto");
+
+const bcrypt = require("bcryptjs");
+const { validationResult } = require("express-validator/check");
+
 exports.getLogin = (req, res, next) => {
   let message = req.flash("error");
   if (message.length > 0) {
