@@ -16,14 +16,21 @@ Watch the link below to review my demo:
 
 # Web Pages
 
-The main app.js file calls the routes folder which handles the controllers in the controllers folder. These controllers hold functions that render the web pages that have EJS injected into HTML code.
+The main **app.js** file calls the routes folder which handles the controllers in the controllers folder. These controllers hold functions that render the web pages that have EJS injected into HTML code.
 
 ## Playlist Folder
-The playlist.ejs page generates a list of songs that users have added.
+The **playlist.ejs** page generates a list of songs that users have added.
 
 ## Auth Folder
-The login.ejs page loads a form where the user can login.
-The signup.ejs file loads a form where the user can create an account.
+The **login.ejs** page loads a form where the user can login.  
+The **signup.ejs** file loads a form where the user can create an account.
+
+## Admin Folder
+*These files will only be loaded if a user is logged in.*  
+
+The **add-song.ejs** file loads a form where the user can add a favorite song to publish.  
+The **create-playlist.ejs** file loads a form where the user can create a playlist to hold songs.  
+The **my-playlist.ejs** file generates a page that shows the playlists the users own. They can view the playlist and see the songs they have in them.
 
 # Development Environment
 
