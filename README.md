@@ -27,11 +27,11 @@ The signup.ejs file loads a form where the user can create an account.
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
+### Tools
 * Visual Studio Code
 * Google Chrome Browser
 
-{Describe the programming language that you used and any libraries.}
+### Programming Language and Libraries
 * node.js
 * html
 * css
