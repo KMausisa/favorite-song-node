@@ -23,14 +23,15 @@
                                 <%= song.artistName %>
                             </h2>
                         </div>
-                        <div class="card__actions">
-                            <form action="/admin/add-to-playlist" method="POST">
-                                <input type="hidden" value="<%= song._id %>" name="songId">
-                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                                <button class="btn" type="submit">Add Song to Playlist</button>
-                            </form>
-
-                        </div>
+                        <% if (isAuthenticated) { %>
+                            <div class="card__actions">
+                                <form action="/admin/add-to-playlist" method="POST">
+                                    <input type="hidden" value="<%= song._id %>" name="songId">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button class="btn" type="submit">Add Song to Playlist</button>
+                                </form>
+                            </div>
+                        <% } %>
                     </article>
                 <% } %>
             </div>
